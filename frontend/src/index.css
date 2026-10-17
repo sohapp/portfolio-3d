@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-primary-foreground: #ffffff;
+    --color-secondary: #6366f1;
+    --color-online: #059669;
+    --color-danger: #dc2626;
+
+    --color-app: #eef2f9;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f1f5fd;
+    --color-surface-hover: #e9effb;
+    --color-content: #0f172a;
+    --color-content-muted: #64748b;
+    --color-content-faint: #94a3b8;
+    --color-border: #e4ecfc;
+
+    --color-bubble-in: #f1f5fd;
+    --color-bubble-in-fg: #0f172a;
+    --color-bubble-out: #2563eb;
+    --color-bubble-out-fg: #ffffff;
+  }
+
+  .dark {
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+    --color-primary-foreground: #0b1120;
+    --color-secondary: #818cf8;
+    --color-online: #34d399;
+    --color-danger: #f87171;
+
+    --color-app: #070c17;
+    --color-surface: #0f172a;
+    --color-surface-muted: #172033;
+    --color-surface-hover: #1e293b;
+    --color-content: #e7ecf5;
+    --color-content-muted: #94a3b8;
+    --color-content-faint: #64748b;
+    --color-border: #1e2a44;
+
+    --color-bubble-in: #1e293b;
+    --color-bubble-in-fg: #e7ecf5;
+    --color-bubble-out: #2563eb;
+    --color-bubble-out-fg: #ffffff;
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-app text-content font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
